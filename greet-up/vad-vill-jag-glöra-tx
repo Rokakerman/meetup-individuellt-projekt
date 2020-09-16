@@ -1,0 +1,7 @@
+Jag vill - () => {
+    - Skappa upp en docker build och publicera den () {
+        - gör en Dockerfile
+        - Gör en build
+        - Publicera den
+    }
+}
