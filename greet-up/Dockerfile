@@ -1,6 +1,6 @@
-FROM node:Its-apline 
+FROM node:lts-alpine
 
-RUN npm install -g http-serve
+RUN npm install -g http-server
 
 WORKDIR /app
 
