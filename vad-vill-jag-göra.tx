@@ -4,4 +4,16 @@ Jag vill - () => {
         - Gör en build
         - Publicera den "Jag kan inte publicera, får en 'unauthorized: authentication required' på push"
     }
+
+    - Skapa krav för mina tester () {
+        - Appen ska ha en landing page med titel på app och en underrubrik 
+        - Alla meet-ups ska finnas i en lista under landing page (scroll)
+        - Man ska kunna klicka på en meet-up, få en detaljerad sida av meet-upen och boka in sig
+        - När man klicka på en meet-up ska man skickar till "Mina Sidor"
+        - På mina sidor ska man få en överblick på alla sina bokade meet-up
+        - När man klickar på en inbokad meet-up ska man kunna avboka och ge ett omdömme
+        - Om man klickar omdömme ska meet-up boxen bli längre och få en input fält med en recensera knapp
+        - Om man klickar på avboka ska meet-upen förvsina från mina sidor
+
+    }
 }
