@@ -14,6 +14,5 @@ Jag vill - () => {
         - När man klickar på en inbokad meet-up ska man kunna avboka och ge ett omdömme
         - Om man klickar omdömme ska meet-up boxen bli längre och få en input fält med en recensera knapp
         - Om man klickar på avboka ska meet-upen förvsina från mina sidor
-
     }
 }
