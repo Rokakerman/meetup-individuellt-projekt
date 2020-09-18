@@ -1,26 +1,35 @@
 <template>
-  <div>
-    <div id="nav">
-        <router-link to="/home">Greet-ups</router-link> | <router-link to="/products">Products</router-link> |
-        <router-link to="/profile">Mina sidor</router-link>
-    </div>
+  <div class="home">
+    <header> </header>
+    <main> <meetUps :meetUpList="list"/> </main>
+    <footer> </footer>
   </div>
 </template>
 
 <script>
-import { getMeetUps } from '../data/data.js';
+// @ is an alias to /src
+
+import { getMeetUps } from '../data/data';
+import navigation from '../components/Navigation'
+import meetUps from '../components/Meet-ups'
+
 export default {
-    data: function() {
-        return {
-            list: []
-        }
-    },
-    created() {
-        this.list = getMeetUps()
-    }
+	data: () => ({
+		list: []
+    }),
+    components: { navigation, meetUps},
+	created() {
+		this.list = getMeetUps();
+	}
 }
 </script>
 
 <style>
-
+header {
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background: green;
+}
 </style>

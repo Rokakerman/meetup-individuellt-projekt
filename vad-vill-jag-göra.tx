@@ -15,4 +15,7 @@ Jag vill - () => {
         - Om man klickar omdömme ska meet-up boxen bli längre och få en input fält med en recensera knapp
         - Om man klickar på avboka ska meet-upen förvsina från mina sidor
     }
+    - i Home viewn vill jag () {
+        - Navigera meet-ups
+    }
 }

@@ -1,6 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import home from '@/views/Home.vue'
-import { getMeetUps } from '../data/data.js';
+import meetUps from '@/components/Meet-ups.vue'
+import { getMeetUps } from '@/data/data.js';
 
 describe("Home.vue", () => {
     let wrapper
@@ -17,17 +18,15 @@ describe("Home.vue", () => {
     - Man ska kunna klicka på en meet-up, få en detaljerad sida av meet-upen och boka in sig
     - När man klicka på en meet-up ska man skickar till "Mina Sidor" */
 
-    it("should display the navigation component on render", () => [
+    it("should display the landing page on render", () => {
+        const LANDING = wrapper.get("main");
+        expect(LANDING.exists()).toBe(true)
+    })
 
-    ])
-
-    it("should display the landing page on render", () => [
-        
-    ])
-
-    it("should display the meet-up list on render", () => [
-        
-    ])
+    it("should display the meet-up component on render", () => {
+        const MEETUP = wrapper.findAllComponents(meetUps)
+        expect(MEETUP.exists()).toBe(true)
+    })
 
 
 })
