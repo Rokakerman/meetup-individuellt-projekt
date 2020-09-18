@@ -1,6 +1,9 @@
 <template>
   <div>
-
+    <div id="nav">
+        <router-link to="/home">Greet-ups</router-link> | <router-link to="/products">Products</router-link> |
+        <router-link to="/profile">Mina sidor</router-link>
+    </div>
   </div>
 </template>
 
