@@ -17,5 +17,12 @@ Jag vill - () => {
     }
     - i Home viewn vill jag () {
         - Navigera meet-ups
+        - Klicka på en meet-up komma till meet-up sidan
+    }
+    - i Profile Viewn vill jag () {
+        - Navigera min bokade meet-ups
+        - Klicka på mina meetups
+        - Avboka mina meetups
+        - Recensera mina meet-ups
     }
 }

@@ -1,5 +1,7 @@
 <template>
-  <div class="hello">
+  <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/profile">About</router-link>
   </div>
 </template>
 
@@ -27,4 +29,19 @@ li {
 a {
   color: #42b983;
 }
+
+#nav {
+  padding: 30px;
+  position: absolute;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+
 </style>
