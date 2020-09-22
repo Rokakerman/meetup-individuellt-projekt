@@ -23,7 +23,7 @@ describe("Home.vue", () => {
         expect(LANDING.exists()).toBe(true)
     })
 
-    it("should display the meet-up component on render", () => {
+    it("should display the My-meet-ups component on render", () => {
         const MEETUP = wrapper.findAllComponents(MyMeetUps)
         expect(MEETUP.exists()).toBe(true)
     })

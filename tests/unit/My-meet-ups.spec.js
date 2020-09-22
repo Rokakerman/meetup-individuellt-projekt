@@ -1,27 +1,27 @@
 import { shallowMount } from '@vue/test-utils'
-import home from '@/views/Home.vue'
-import meetUps from '@/components/Meet-ups.vue'
+import MeetUps from '@/components/Meet-ups.vue'
 import { getMeetUps } from '@/data/data.js';
 
-describe("Home.vue", () => {
+describe("Meet-ups.vue", () => {
     let wrapper
 
     beforeEach(() => {
-        wrapper = shallowMount(home, {
+        wrapper = shallowMount(MeetUps, {
             propsData: {
                 list: getMeetUps()
             }
         })
     })
-  /*- Appen ska ha en landing page med titel på app och en underrubrik 
-    - Alla meet-ups ska finnas i en lista under landing page (scroll) */
 
-    it("should display the landing page on render", () => {
+  /*- Den ska visa en lista med mina sparade meet-ups
+    - Jag ska kunna klicka på en meet-up och få en detaljerad vy av min bokade meet-up*/
+
+    it("should display all meet", () => {
         const LANDING = wrapper.get("main");
         expect(LANDING.exists()).toBe(true)
     })
 
-    it("should display the meet-ups component on render", () => {
+    it("should open emit a event when clicking on a meetup", () => {
         const MEETUP = wrapper.findAllComponents(meetUps)
         expect(MEETUP.exists()).toBe(true)
     })

@@ -1,20 +1,104 @@
 <template>
-  
+    <div class="meet-up-list">
+        <ul>
+            <li v-for="item in list" :key="item.id">
+                <header class="img-container"> <img/> </header> 
+                <main class="figure-main"> 
+                    <h2> {{ item.title }} </h2>
+                    <h2> {{ item.date }} </h2>
+                </main>
+                <footer class="figure-footer">
+                    <div class="under-title-container"> <h3> {{ item.underTitle }} </h3> <p/> </div>
+                    <div class="description-container"> <p> {{ item.description }} </p> </div>
+                </footer>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
+import MeetUp from '../components/Meet-up'
+import { getMeetUps } from '@/data/data.js';
+
 export default {
     data() {
         return {
-
+            meetUpList: []
         }
     },
+    components: { meetUp: MeetUp},
     props: {
-        meetUpList: Array
+        dataBase: Array
+    },
+    computed: {
+        list() {
+            return this.meetUpList = this.dataBase
+        }
     }
 }
 </script>
 
 <style>
+.img-container {
+    border: 1px solid red;
+    width: 99%;
+    height: 30%;
+}
+ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    overflow-x: visible;
+    height: 100vh;
+}
 
+li {
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 0px;
+    margin: 0px;
+    height: 300px;
+    width: 250px;
+    margin-top: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.figure-main {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.figure-footer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.under-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.description-container {
+    text-align: start;
+    margin: 20px 0px 0px 0px
+}
+
+h3 {
+    margin: -13px 10px 0px 0px;
+}
+
+p {
+    margin: 0px;
+}
 </style>

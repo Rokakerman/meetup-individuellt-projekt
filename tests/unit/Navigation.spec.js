@@ -23,6 +23,8 @@ describe("Navigation.vue", () => {
         })
     })
 
+    /* - Jag ska kunna switcha imellan två vyar */
+
     it("should display the navigation on render", () => {
         const NAV = wrapper.get("#nav");
         expect(NAV.exists()).toBe(true)

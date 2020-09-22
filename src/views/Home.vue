@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <header> </header>
-    <main> <meetUps :meetUpList="list"/> </main>
+    <header class="home-header"> </header>
+    <main> <meetUps :dataBase="list"/> </main>
     <footer> </footer>
   </div>
 </template>
@@ -10,14 +10,13 @@
 // @ is an alias to /src
 
 import { getMeetUps } from '../data/data';
-import navigation from '../components/Navigation'
 import meetUps from '../components/Meet-ups'
 
 export default {
 	data: () => ({
 		list: []
     }),
-    components: { navigation, meetUps},
+    components: { meetUps },
 	created() {
 		this.list = getMeetUps();
 	}
@@ -25,7 +24,7 @@ export default {
 </script>
 
 <style>
-header {
+.home-header {
     width: 100vw;
     height: 100vh;
     margin: 0px;
