@@ -38,6 +38,4 @@ describe("Meet-ups.vue", () => {
         expect(wrapper.emitted().myEvent[0]).toEqual(["name", "password"])
         expect(wrapper.emitted()).toBeTruthy()
     })
-
-
 })

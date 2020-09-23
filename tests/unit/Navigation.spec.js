@@ -5,6 +5,7 @@ import Profile from '@/views/Profile.vue'
 import { getMeetUps } from '@/data/data.js';
 
 
+
 describe("Navigation.vue", () => {
     let wrapper
     const localVue = createLocalVue()
