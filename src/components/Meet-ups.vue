@@ -1,7 +1,7 @@
 <template>
     <div class="meet-up-list">
         <ul>
-            <li v-for="item in list" :key="item.id">
+            <li v-for="item in list" :key="item.id" @click="emitId(item.id)">
                 <header class="img-container"> <img/> </header> 
                 <main class="figure-main"> 
                     <h2> {{ item.title }} </h2>
@@ -33,6 +33,13 @@ export default {
     computed: {
         list() {
             return this.meetUpList = this.dataBase
+        }
+    },
+    methods: {
+        emitId(param) {
+            console.log(param)
+            this.$emit("selectMeetUp", param)
+            return
         }
     }
 }

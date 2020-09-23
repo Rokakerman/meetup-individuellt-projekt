@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <header class="home-header"> </header>
-    <main> <meetUps :dataBase="list"/> </main>
+    <main> 
+      <meetUps :dataBase="list" v-on:selectMeetUp="toggleMeetUp"/> 
+      <meetUp v-if="clicked == true" :dataBaseItem="clickedListitem"/>
+    </main>
     <footer> </footer>
   </div>
 </template>
@@ -11,15 +14,25 @@
 
 import { getMeetUps } from '../data/data';
 import meetUps from '../components/Meet-ups'
+import meetUp from '../components/Meet-up'
 
 export default {
 	data: () => ({
-		list: []
+    list: [],
+    clicked: false,
+    clickedListitem: ''
     }),
-    components: { meetUps },
+    components: { meetUps, meetUp },
 	created() {
 		this.list = getMeetUps();
-	}
+  },
+  methods: {
+    toggleMeetUp(param) {
+      this.clickedListitem = this.list[param]
+      this.clicked = !this.clicked
+      console.log(this.clickedListitem)
+    }
+  }
 }
 </script>
 

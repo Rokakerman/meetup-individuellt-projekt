@@ -20,12 +20,12 @@ describe("Meet-ups.vue", () => {
     - Om meet-upen redan är inbokad ska det jag kunna recensera den
     - Om meet-upen redan är inbokad ska det jag kunna avboka den */
 
-    it("should display all meet", () => {
+    it("should display the detailed view of the meet-up", () => {
         const LANDING = wrapper.get("main");
         expect(LANDING.exists()).toBe(true)
     })
 
-    it("should open emit a event when clicking on a meetup", () => {
+    it("should ", () => {
         const MEETUP = wrapper.findAllComponents(meetUps)
         expect(MEETUP.exists()).toBe(true)
     })
