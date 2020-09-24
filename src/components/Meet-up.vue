@@ -1,7 +1,7 @@
 <template>
     <div id="meet-up-view">
         <figure class="meet-up-container">
-            <header class="img-container"> <img/> </header> 
+            <header class="img-container"> <img/> <div @click="closeMe">  x </div> </header> 
             <main class="figure-main"> 
                 <h2> {{ dataBaseItem.title }} </h2>
                 <h2> {{ dataBaseItem.date }} </h2>
@@ -9,20 +9,29 @@
             <footer class="figure-footer">
                 <div class="under-title-container"> <h3> {{ dataBaseItem.underTitle }} </h3> <p/> </div>
                 <div class="description-container"> <p> {{ dataBaseItem.description }} </p> </div>
-                <button class="book"> BOOK </button>
+                <button @click="saveToSession" class="book"> BOOK </button>
             </footer>
-        </figure>
+        </figure>   
     </div>
 </template>
 
 <script>
+import { saveMeetUp } from '../data/data'
 export default {
     data: () => ({
-     
+        meetUp: ''
     }),
     props: {
-            dataBaseItem: Object
+        dataBaseItem: Object
+    },
+    methods: {
+        saveToSession() {
+            saveMeetUp(this.dataBaseItem)
+        },
+        closeMe() {
+            this.$emit("close")
         }
+    }
 }
 </script>
 

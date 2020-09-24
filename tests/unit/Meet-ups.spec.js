@@ -16,7 +16,7 @@ describe("Meet-ups.vue", () => {
   /*- Den ska visa en kortfattad beskrivnng av meet-upen
     - Jag ska kunna klicka på en meet-upen och få upp en detaljerad vy av evenemanget. */
 
-    it("should display all meet-ups", () => {
+    it("should display the detailed view of the meet-up", () => {
         let expected = getMeetUps()
         let actual = wrapper.vm.dataBase.length
         // hej

@@ -1,14 +1,16 @@
 import { shallowMount } from '@vue/test-utils'
-import MeetUps from '@/components/Meet-ups.vue'
+import MeetUp from '@/components/Meet-up.vue'
 import { getMeetUps } from '@/data/data.js';
 
 describe("Meet-ups.vue", () => {
     let wrapper
+    let dataBaseList = getMeetUps()
+    let object = dataBaseList[0]
 
     beforeEach(() => {
-        wrapper = shallowMount(MeetUps, {
+        wrapper = shallowMount(MeetUp, {
             propsData: {
-                list: getMeetUps()
+                dataBaseItem: object
             }
         })
     })
@@ -20,15 +22,38 @@ describe("Meet-ups.vue", () => {
     - Om meet-upen redan är inbokad ska det jag kunna recensera den
     - Om meet-upen redan är inbokad ska det jag kunna avboka den */
 
-    it("should display the detailed view of the meet-up", () => {
-        const LANDING = wrapper.get("main");
-        expect(LANDING.exists()).toBe(true)
+    it("should display the detailed view of the meet-up on render", () => {
+        const visibility = wrapper.isVisible()
+        expect(visibility).toBe(true)
     })
 
-    it("should ", () => {
-        const MEETUP = wrapper.findAllComponents(meetUps)
-        expect(MEETUP.exists()).toBe(true)
+    it("should contain a object from the database within props", () => {
+        let actual = wrapper.vm._props.dataBaseItem;
+        let expected = object
+        //console.log('Vue instance item : ' +  JSON.stringify(x) /*JSON.stringify(Object.keys(wrapper.vm._props))*/)
+        //console.log('Test Item: ' + JSON.stringify(object))
+        expect(actual).toBe(expected)
     })
 
+    it("should display the meet-up properties on render", async () => {
+        let html = wrapper.findAll("h2").at(0).text()
+        let length = html.length
+        let expected
 
+        async function myFunction() {
+            if(!length) {
+                return expected = false
+            }
+            return expected = true
+        }
+        await myFunction()
+        
+        console.log(expected)
+        expect(expected).toBe(true) 
+    })
+
+    it("should store the meet-up in session storage when clicking on book", async () => {
+        let button = wrapper.get("button")
+        await button.trigger("click")
+    })
 })

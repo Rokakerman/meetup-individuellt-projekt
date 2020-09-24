@@ -25,4 +25,8 @@ Jag vill - () => {
         - Avboka mina meetups
         - Recensera mina meet-ups
     }
+
+    Senaste gången () {
+        Jag avslutade med att lägga till en close function på meet-up vyn
+    }
 }

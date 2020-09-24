@@ -3,7 +3,7 @@
     <header class="home-header"> </header>
     <main> 
       <meetUps :dataBase="list" v-on:selectMeetUp="toggleMeetUp"/> 
-      <meetUp v-if="clicked == true" :dataBaseItem="clickedListitem"/>
+      <meetUp v-if="clicked == true" v-on:close="closeMeetUp" :dataBaseItem="clickedListitem"/>
     </main>
     <footer> </footer>
   </div>
@@ -20,7 +20,7 @@ export default {
 	data: () => ({
     list: [],
     clicked: false,
-    clickedListitem: ''
+    clickedListitem: {}
     }),
     components: { meetUps, meetUp },
 	created() {
@@ -31,6 +31,9 @@ export default {
       this.clickedListitem = this.list[param]
       this.clicked = !this.clicked
       console.log(this.clickedListitem)
+    },
+    closeMeetUp() {
+      this.clicked = false
     }
   }
 }

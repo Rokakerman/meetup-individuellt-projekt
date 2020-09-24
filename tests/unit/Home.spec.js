@@ -1,6 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import home from '@/views/Home.vue'
 import meetUps from '@/components/Meet-ups.vue'
+import meetUp from '@/components/Meet-up.vue'
 import { getMeetUps } from '@/data/data.js';
 
 describe("Home.vue", () => {
@@ -21,9 +22,34 @@ describe("Home.vue", () => {
         expect(LANDING.exists()).toBe(true)
     })
 
-    it("should display the meet-ups component on render", () => {
-        const MEETUP = wrapper.findAllComponents(meetUps)
-        expect(MEETUP.exists()).toBe(true)
+    it("should display the Meet-ups component on render", () => {
+        const MEETUPS = wrapper.findAllComponents(meetUps)
+        const visibility = MEETUPS.isVisible()
+        expect(visibility).toBe(true)
+    })
+
+    it("should not display the Meet-up component on render", () => {
+        const myComponent = wrapper.findComponent(meetUp)
+        const visibility = myComponent.exists()
+        expect(visibility).toBe(false)
+    })
+
+    it("should display the Meet-up component when property 'clicked' is equal to true", async () => {
+        //let myProperty = wrapper.vm.clicked;
+        //await myProperty.setData(true)
+        await wrapper.setData({ clicked: true })
+        console.log(wrapper.vm.clicked)
+        const myComponent = wrapper.findComponent(meetUp)
+        const visibility = myComponent.isVisible()
+        expect(visibility).toBe(true)
+    })
+
+    it("should not display the Meet-up component when property 'clicked' is equal to false", async () => {
+        await wrapper.setData({ clicked: false })
+        console.log(wrapper.vm.clicked)
+        const myComponent = wrapper.findComponent(meetUp)
+        const visibility = myComponent.exists()
+        expect(visibility).toBe(false)
     })
 
 
