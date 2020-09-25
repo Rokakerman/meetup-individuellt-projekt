@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     toggleMeetUp(param) {
-      this.clickedListitem = this.list[param]
+      this.clickedListitem = this.list[param - 1]
       this.clicked = !this.clicked
       console.log(this.clickedListitem)
     },
@@ -39,9 +39,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .home-header {
-    width: 100vw;
     height: 100vh;
     margin: 0px;
     padding: 0px;
