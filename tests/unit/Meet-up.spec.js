@@ -53,12 +53,19 @@ describe("Meet-ups.vue", () => {
         expect(expected).toBe(true) 
     })
 
-    it("should store the meet-up in session storage when clicking on book", async () => {
-        const SS_KEY = 'my-meet-up-list';
-        const VALUE = object; 
-        dispatch(action.update(SS_KEY, VALUE));
-        expect(sessionStorage.setItem).toHaveBeenLastCalledWith(KEY, VALUE);
-        expect(sessionStorage.__STORE__[KEY]).toBe(VALUE);
-        expect(Object.keys(sessionStorage.__STORE__).length).toBe(1);
-    })
+    describe('save to session storage', () => {
+        beforeEach(() => {
+          jest.spyOn(Storage.prototype, 'setItem')
+        })
+      
+        afterEach(() => {
+          sessionStorage.setItem.mockRestore()
+        })
+      
+        it('should save to local storage', () => {
+            const SS_KEY = 'my-meet-up-list';
+          saveToSs(SS_KEY, object)
+          expect(sessionStorage.setItem).toHaveBeenCalledWith(SS_KEY, object)
+        })
+      })
 })
