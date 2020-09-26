@@ -8,6 +8,7 @@ describe("Meet-ups.vue", () => {
     let object = dataBaseList[0]
 
     beforeEach(() => {
+        sessionStorage.clear()
         wrapper = shallowMount(MeetUp, {
             propsData: {
                 dataBaseItem: object
@@ -53,7 +54,11 @@ describe("Meet-ups.vue", () => {
     })
 
     it("should store the meet-up in session storage when clicking on book", async () => {
-        let button = wrapper.get("button")
-        await button.trigger("click")
+        const SS_KEY = 'my-meet-up-list';
+        const VALUE = object; 
+        dispatch(action.update(SS_KEY, VALUE));
+        expect(sessionStorage.setItem).toHaveBeenLastCalledWith(KEY, VALUE);
+        expect(sessionStorage.__STORE__[KEY]).toBe(VALUE);
+        expect(Object.keys(sessionStorage.__STORE__).length).toBe(1);
     })
 })

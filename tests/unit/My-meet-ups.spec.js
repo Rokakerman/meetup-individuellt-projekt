@@ -1,14 +1,14 @@
 import { shallowMount } from '@vue/test-utils'
-import MeetUps from '@/components/Meet-ups.vue'
+import MyMeetUps from '@/components/My-meet-ups.vue'
 import { getMeetUps } from '@/data/data.js';
 
 describe("Meet-ups.vue", () => {
     let wrapper
 
     beforeEach(() => {
-        wrapper = shallowMount(MeetUps, {
+        wrapper = shallowMount(MyMeetUps, {
             propsData: {
-                list: getMeetUps()
+                userData: getMeetUps()
             }
         })
     })
@@ -25,6 +25,4 @@ describe("Meet-ups.vue", () => {
         const MEETUP = wrapper.findAllComponents(meetUps)
         expect(MEETUP.exists()).toBe(true)
     })
-
-
 })
