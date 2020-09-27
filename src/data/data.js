@@ -23,6 +23,12 @@ function getMeetUps() {
     return JSON.parse(fromLs);
 }
 
+function getMyMeetUps() {
+    const SS_KEY = 'my-meet-up-list';
+    let fromLs = sessionStorage.getItem(SS_KEY);
+    return JSON.parse(fromLs);
+}
+
 async function saveMeetUp(object) {
     const SS_KEY = 'my-meet-up-list';
     let fromSs = sessionStorage.getItem(SS_KEY);
@@ -50,6 +56,31 @@ async function saveMeetUp(object) {
 
 }
 
+async function checkMeetUp(object) {
+    const SS_KEY = 'my-meet-up-list';
+    let fromSs = sessionStorage.getItem(SS_KEY);
+    if( !fromSs ) {
+        sessionStorage.setItem(SS_KEY,  JSON.stringify(itemsArray));
+        fromSs = sessionStorage.getItem(SS_KEY);
+        return 
+    } 
+    itemsArray = JSON.parse(fromSs)
+
+    //console.log(object.id)
+    /*let identical = Boolean(itemsArray.find(() => {return el => el.id == object.id}))
+    console.log(identical)*/
+    const check = (element) => element.id === object.id;
+    if (itemsArray.some(check) == true) {
+        //console.log(itemsArray)
+        console.log("this meet-up is booked already")
+        return true
+    } else {
+        return false
+    }
+}
+
 
 export { getMeetUps }
+export { getMyMeetUps }
 export { saveMeetUp }
+export { checkMeetUp }

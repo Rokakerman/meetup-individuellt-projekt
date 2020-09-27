@@ -3,7 +3,7 @@
     <header class="home-header"> </header>
     <main> 
       <meetUps :dataBase="list" v-on:selectMeetUp="toggleMeetUp"/> 
-      <meetUp v-if="clicked == true" v-on:close="closeMeetUp" :dataBaseItem="clickedListitem"/>
+      <meetUp v-if="clicked == true" v-on:close="closeMeetUp" :dataBaseItem="clickedListitem" :view="view"/>
     </main>
     <footer> </footer>
   </div>
@@ -18,6 +18,7 @@ import meetUp from '../components/Meet-up'
 
 export default {
 	data: () => ({
+    view: "home",
     list: [],
     clicked: false,
     clickedListitem: {}

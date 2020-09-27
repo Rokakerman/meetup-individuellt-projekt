@@ -28,6 +28,7 @@
     "not dead"
   ],
   "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
+    "preset": "@vue/cli-plugin-unit-jest",
+    "setupFiles": ["jest-localstorage-mock"]
   }
 }

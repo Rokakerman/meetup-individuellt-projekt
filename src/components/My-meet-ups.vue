@@ -1,7 +1,7 @@
 <template>
     <div class="meet-up-list">
         <ul>
-            <li v-for="item in userData" :key="item.id" @click="emitId(item.id)">
+            <li v-for="item in list" :key="item.id" @click="emitId(item.id)">
                 <header class="img-container"> <img/> </header> 
                 <main class="figure-main"> 
                     <h2> {{ item.title }} </h2>
@@ -18,7 +18,6 @@
 
 <script>
 import MeetUp from '../components/Meet-up'
-import { getMeetUps } from '@/data/data.js';
 
 export default {
     data() {
@@ -32,11 +31,7 @@ export default {
     },
     computed: {
         list() {
-            const SS_KEY = 'my-meet-up-list';
-            let fromSs = sessionStorage.getItem(SS_KEY);
-            console.log(JSON.parse(fromSs))
-            return fromSs
-
+            return this.meetUpList = this.userData
         }
     },
     methods: {

@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import MeetUp from '@/components/Meet-up.vue'
 import { getMeetUps } from '@/data/data.js';
 
-describe("Meet-ups.vue", () => {
+describe("Meet-up.vue", () => {
     let wrapper
     let dataBaseList = getMeetUps()
     let object = dataBaseList[0]
@@ -11,7 +11,8 @@ describe("Meet-ups.vue", () => {
         sessionStorage.clear()
         wrapper = shallowMount(MeetUp, {
             propsData: {
-                dataBaseItem: object
+                dataBaseItem: object,
+                view: 'home'
             }
         })
     })
@@ -48,24 +49,27 @@ describe("Meet-ups.vue", () => {
             return expected = true
         }
         await myFunction()
-        
-        console.log(expected)
+
         expect(expected).toBe(true) 
     })
 
-    describe('save to session storage', () => {
-        beforeEach(() => {
-          jest.spyOn(Storage.prototype, 'setItem')
-        })
-      
-        afterEach(() => {
-          sessionStorage.setItem.mockRestore()
-        })
-      
-        it('should save to local storage', () => {
-            const SS_KEY = 'my-meet-up-list';
-          saveToSs(SS_KEY, object)
-          expect(sessionStorage.setItem).toHaveBeenCalledWith(SS_KEY, object)
-        })
-      })
+    it('should save the meet-up object sessionStorage when clicking on the "book" button', async () => {
+        const KEY = 'my-meet-up-list',
+          VALUE = object;/*
+        sessionStorage.setItem(KEY, JSON.stringify(VALUE));
+        expect(sessionStorage.setItem).toHaveBeenLastCalledWith(KEY, JSON.stringify(VALUE));*/
+        let button = wrapper.get("#book");
+        await button.trigger("click")
+        let expected = JSON.parse(sessionStorage.__STORE__[KEY])
+        expect(expected[0]).toStrictEqual(VALUE);
+        expect(Object.keys(sessionStorage.__STORE__).length).toBe(1);
+    });
+
+    it("should hide the 'book' button and show the 'booked' element when 'book' is clicked", async () => {
+        let button = wrapper.get("#book");
+        await button.trigger("click")
+
+        expect(wrapper.find("#book").exists()).toBe(false)
+        expect(wrapper.find("#booked").exists()).toBe(true)
+    })
 })

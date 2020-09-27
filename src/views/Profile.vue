@@ -2,8 +2,8 @@
   <div class="profile">
     <header class="profile-header"> </header>
     <main> 
-      <MyMeetUps class="meet-up-component" :userData="mounted" v-on:selectMeetUp="toggleMeetUp"/> 
-      <meetUp v-if="clicked == true" v-on:close="closeMeetUp" :dataBaseItem="clickedListitem"/>
+      <MyMeetUps class="meet-up-component" :userData="sStorage" v-on:selectMeetUp="toggleMeetUp"/> 
+      <meetUp v-if="clicked == true" v-on:close="closeMeetUp" :dataBaseItem="clickedListitem" :view="view"/>
     </main>
     <footer> </footer>
   </div>
@@ -12,27 +12,28 @@
 <script>
 // @ is an alias to /src
 
-import { getMeetUps } from '../data/data';
+import { getMyMeetUps } from '../data/data';
 import MyMeetUps from '../components/My-meet-ups'
 import meetUp from '../components/Meet-up'
 
 export default {
 	data: () => ({
-    list: [],
+    view: "profile",
+    list: getMyMeetUps(),
     clicked: false,
     clickedListitem: {}
     }),
     components: { MyMeetUps, meetUp },
     computed: {
-        mounted() {
-            const SS_KEY = 'my-meet-up-list';
-            let fromSs = sessionStorage.getItem(SS_KEY);
-            return JSON.parse(fromSs);
+      sStorage() {
+        const SS_KEY = 'my-meet-up-list';
+        let fromSs = sessionStorage.getItem(SS_KEY);
+        return JSON.parse(fromSs);
     }
     },
   methods: {
     toggleMeetUp(param) {
-      this.clickedListitem = this.list[param]
+      this.clickedListitem = this.list[param - 1]
       this.clicked = !this.clicked
       console.log(this.clickedListitem)
     },

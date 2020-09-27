@@ -1,5 +1,5 @@
 <template>
-    <div id="meet-up-view">
+    <div v-if="defineView == 'home'" id="meet-up-view">
         <figure class="meet-up-container">
             <header class="img-container"> <img/> <div @click="closeMe">  x </div> </header> 
             <main class="figure-main"> 
@@ -9,7 +9,23 @@
             <footer class="figure-footer">
                 <div class="under-title-container"> <h3> {{ dataBaseItem.underTitle }} </h3> <p/> </div>
                 <div class="description-container"> <p> {{ dataBaseItem.description }} </p> </div>
-                <button @click="saveToSession" class="book"> BOOK </button>
+                <button id="book" v-if="!stored" @click="saveToSession" class="book"> BOOK </button>
+                <button id="booked" v-else class="book"> BOOKED! </button>
+            </footer>
+        </figure>   
+    </div>
+    <div v-else id="meet-up-view">
+        <figure class="meet-up-container">
+            <header class="img-container"> <img/> <div @click="closeMe">  x </div> </header> 
+            <main class="figure-main"> 
+                <h2> {{ dataBaseItem.title }} </h2>
+                <h2> {{ dataBaseItem.date }} </h2>
+            </main>
+            <footer class="figure-footer">
+                <div class="under-title-container"> <h3> {{ dataBaseItem.underTitle }} </h3> <p/> </div>
+                <div class="description-container"> <p> {{ dataBaseItem.description }} </p> </div>
+                <button id="booked" class="book"> CANCEL </button>
+                <button id="booked" class="book"> REVIEW </button>
             </footer>
         </figure>   
     </div>
@@ -17,19 +33,32 @@
 
 <script>
 import { saveMeetUp } from '../data/data'
+import { checkMeetUp } from '../data/data'
 export default {
     data: () => ({
-        meetUp: ''
+        meetUp: '',
+        stored: false,
+        currentView: ''
     }),
     props: {
-        dataBaseItem: Object
+        dataBaseItem: Object,
+        view: String
     },
     methods: {
         saveToSession() {
             saveMeetUp(this.dataBaseItem)
+            this.stored = true
         },
         closeMe() {
             this.$emit("close")
+        }
+    },
+    mounted: async function () {
+        this.stored = await checkMeetUp(this.dataBaseItem)
+    },
+    computed: {
+        defineView: function () {
+            return this.view
         }
     }
 }
