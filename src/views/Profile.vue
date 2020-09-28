@@ -27,18 +27,20 @@ export default {
     computed: {
       sStorage() {
         const SS_KEY = 'my-meet-up-list';
-        let fromSs = sessionStorage.getItem(SS_KEY);
-        return JSON.parse(fromSs);
+        let fromSs = this.list;
+        return fromSs;
     }
     },
   methods: {
     toggleMeetUp(param) {
-      this.clickedListitem = this.list[param - 1]
-      this.clicked = !this.clicked
-      console.log(this.clickedListitem)
+      const result = this.list.find(object => object.id == param);
+      console.log('This is the result variable: ' + JSON.stringify(result))
+      this.clickedListitem = result
+      this.clicked = !this.clicked  
     },
     closeMeetUp() {
-      this.clicked = false
+      this.clicked = !this.clicked
+      this.list = getMyMeetUps()
     }
   }
 }

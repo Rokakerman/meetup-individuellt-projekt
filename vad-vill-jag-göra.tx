@@ -27,6 +27,8 @@ Jag vill - () => {
     }
 
     Senaste gången () {
-        Jag avslutade med att lägga till en close function på meet-up vyn
+        Jag vill tona ner bakgrunden när den detaljerade vyn av meet-upen är uppe.
+        Jag vill göra regler för css regler för desktop och ipad
+        Jag vill hitta bilder för mina kort
     }
 }

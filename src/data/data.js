@@ -1,12 +1,12 @@
 const defaultData = [
-    { id: 1, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
-    { id: 2, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
-    { id: 3, title: "Lorem", date: "24/12", underTitle: "Lorem ipsumt", description: "Lorem ipsum with even more bread text" },
+    { id: 0, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text ever! Get ready for e pic gamer moment" },
+    { id: 1, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text! Karioke med gospelkören, ses där!" },
+    { id: 2, title: "Lorem", date: "24/12", underTitle: "Lorem ipsumt", description: "Lorem ipsum with even more bread text!" },
+    { id: 3, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text! Fomrula 1 fan meet up! " },
     { id: 4, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
     { id: 5, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
     { id: 6, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
-    { id: 7, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
-    { id: 8, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" }
+    { id: 7, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" }
 ]
 
 let itemsArray = []
@@ -56,6 +56,22 @@ async function saveMeetUp(object) {
 
 }
 
+async function removeMeetUp(object) {
+    const SS_KEY = 'my-meet-up-list';
+    let fromSs = sessionStorage.getItem(SS_KEY);
+    itemsArray = JSON.parse(fromSs)
+    console.log(JSON.parse(fromSs))
+    
+
+    const equal = (element) => element.id === object.id 
+    let index = itemsArray.findIndex(equal);
+
+    
+    itemsArray.splice(index, 1)
+    sessionStorage.setItem(SS_KEY, JSON.stringify(itemsArray));
+    console.log(itemsArray)
+}
+
 async function checkMeetUp(object) {
     const SS_KEY = 'my-meet-up-list';
     let fromSs = sessionStorage.getItem(SS_KEY);
@@ -72,7 +88,7 @@ async function checkMeetUp(object) {
     const check = (element) => element.id === object.id;
     if (itemsArray.some(check) == true) {
         //console.log(itemsArray)
-        console.log("this meet-up is booked already")
+
         return true
     } else {
         return false
@@ -83,4 +99,5 @@ async function checkMeetUp(object) {
 export { getMeetUps }
 export { getMyMeetUps }
 export { saveMeetUp }
+export { removeMeetUp }
 export { checkMeetUp }

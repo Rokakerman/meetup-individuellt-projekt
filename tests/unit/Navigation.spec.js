@@ -2,9 +2,6 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import Navigation from '@/components/Navigation.vue'
 import Profile from '@/views/Profile.vue'
-import { getMeetUps } from '@/data/data.js';
-
-
 
 describe("Navigation.vue", () => {
     let wrapper

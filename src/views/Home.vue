@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     toggleMeetUp(param) {
-      this.clickedListitem = this.list[param - 1]
+      this.clickedListitem = this.list[param]
       this.clicked = !this.clicked
       console.log(this.clickedListitem)
     },
