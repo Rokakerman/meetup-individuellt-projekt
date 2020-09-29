@@ -31,8 +31,12 @@ a {
 }
 
 #nav {
-  padding: 30px;
   position: absolute;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #nav a {

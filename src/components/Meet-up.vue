@@ -1,7 +1,7 @@
 <template>
     <div v-if="defineView == 'home'" id="meet-up-view">
         <figure class="meet-up-container">
-            <header class="img-container"> <img/> <div @click="closeMe">  x </div> </header> 
+            <header class="img-container"> <img class="image" :src="dataBaseItem.image"/> <div class="close" @click="closeMe">  x </div> </header> 
             <main class="figure-main"> 
                 <h2> {{ dataBaseItem.title }} </h2>
                 <h2> {{ dataBaseItem.date }} </h2>
@@ -16,14 +16,14 @@
     </div>
     <div v-else id="meet-up-view">
         <figure class="meet-up-container">
-            <header class="img-container"> <img/> <div @click="closeMe">  x </div> </header> 
+            <header class="img-container"> <img class="image" :src="dataBaseItem.image"/> <div class="close" @click="closeMe">  x </div> </header> 
             <main class="figure-main"> 
                 <h2> {{ dataBaseItem.title }} </h2>
                 <h2> {{ dataBaseItem.date }} </h2>
             </main>
             <footer class="figure-footer">
                 <div class="under-title-container"> <h3> {{ dataBaseItem.underTitle }} </h3> <p/> </div>
-                <div class="description-container"> <p> {{ dataBaseItem.description }} </p> </div>
+                <div class="description-container" v-if="!review"> <p> {{ dataBaseItem.description }} </p> </div>
                 <input v-if="review" type="text" class="review-field">
             <div class="buttons-wrapper">
                 <button id="booked" class="book" @click="removeMe"> CANCEL </button>
@@ -91,7 +91,6 @@ export default {
 }
 
 .meet-up-container {
-    border: 2px solid black;
     border-radius: 3px;
     padding: 0px;
     margin: 0px;
@@ -109,10 +108,22 @@ export default {
 }
 
 .img-container {
-    border: 1px solid red;
-    width: 99%;
+    width: 100%;
     height: 30%;
     height: 25%;
+}
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 110%;
+}
+
+.close {
+    position: absolute;
+    top: -26px;
+    right: 7px;
+    color: white;
 }
 
 .figure-main {
@@ -142,7 +153,7 @@ export default {
 .review-field {
     margin-top: auto;
     height: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-top: 5px;
 }
 
@@ -152,6 +163,7 @@ export default {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .book {
@@ -160,8 +172,10 @@ export default {
     height: 35px;
     margin-bottom: 5px;
     border: none;
-    background-color: orangered;
+    background-color: #ff4500;
     color: white;
+    font-size: large;
+    border-radius: 3px;
 }
 
 .home-button {
@@ -172,9 +186,11 @@ export default {
     border: none;
     background-color: orangered;
     color: white;
+    font-size: xx-large;
+    border-radius: 3px;
 }
 h3 {
-    margin: -13px 10px 0px 0px;
+    margin: -5px 10px 0px 0px;
 }
 
 p {

@@ -2,7 +2,7 @@
     <div class="meet-up-list">
         <ul>
             <li v-for="item in list" :key="item.id" @click="emitId(item.id)">
-                <header class="img-container"> <img/> </header> 
+                <header class="img-container"> <img class="image" :src="item.image"/> </header> 
                 <main class="figure-main"> 
                     <h2> {{ item.title }} </h2>
                     <h2> {{ item.date }} </h2>
@@ -47,10 +47,16 @@ export default {
 
 <style>
 .img-container {
-    border: 1px solid red;
-    width: 99%;
+    width: 100%;
     height: 30%;
 }
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 110%;
+}
+
 ul {
     list-style: none;
     padding: 0px;

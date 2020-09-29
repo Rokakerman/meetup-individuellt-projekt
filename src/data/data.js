@@ -1,12 +1,12 @@
 const defaultData = [
-    { id: 0, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text ever! Get ready for e pic gamer moment" },
-    { id: 1, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text! Karioke med gospelkören, ses där!" },
-    { id: 2, title: "Lorem", date: "24/12", underTitle: "Lorem ipsumt", description: "Lorem ipsum with even more bread text!" },
-    { id: 3, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text! Fomrula 1 fan meet up! " },
-    { id: 4, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
-    { id: 5, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
-    { id: 6, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" },
-    { id: 7, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text" }
+    { id: 0, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text ever! Get ready for e pic gamer moment", image: 'https://www.sfbok.se/sites/default/files/sfbokbilder/butiker/sirius1.jpg' },
+    { id: 1, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text! Karioke med gospelkören, ses där!", image: 'https://eqal.se/wp-content/uploads/2011/10/IGod-2-468x312.jpg' },
+    { id: 2, title: "Lorem", date: "24/12", underTitle: "Lorem ipsumt", description: "Lorem ipsum with even more bread text!", image: 'https://i.ytimg.com/vi/qyZaBvCnKTU/maxresdefault.jpg'},
+    { id: 3, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text! Fomrula 1 fan meet up! " , image: 'https://images.squarespace-cdn.com/content/v1/5346a3bfe4b0c08d31d63e97/1402919028544-YAOI0V9JKMNATAGTKHQT/ke17ZwdGBToddI8pDm48kPOyYgnW7nyGjASOBc05s4cUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcmu9LPXh6MQ2js1S_zRc5FMg_8U215fhUVz0tlLN9nY9kaGBuGgADdJLkI-1Bdr5-/limmared-action'},
+    { id: 4, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text", image: 'https://svenskamassan.se/uploads/sites/46/2018/02/7079e921-5e6e-4791-8601-ac1c815b83db-1024x691.jpg' },
+    { id: 5, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text", image: 'https://static.presentjakt.se/products/retailers/gocartcentralen/gokartcentralen_race_gron_gocart_main_l.jpg?v=1567488810000' },
+    { id: 6, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text", image: 'https://resources.mynewsdesk.com/image/upload/ar_16:9,c_fill,dpr_auto,f_auto,g_auto,q_auto,w_864/n7aafeihcxwfldtbgpeu.jpg' },
+    { id: 7, title: "Lorem", date: "24/12", underTitle: "Lorem ipsum", description: "Lorem ipsum with even more bread text", image: 'https://www.gp.se/image/policy:1.500293:1462552456/image.jpg?f=Wide&w=1200&$p$f$w=834285a' }
 ]
 
 let itemsArray = []

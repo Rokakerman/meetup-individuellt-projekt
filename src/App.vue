@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/profile">About</router-link>
-  </div>
+      <nav>
+        <router-link to="/">Greet Ups</router-link> |
+        <router-link to="/profile">My Greet Ups</router-link>
+      </nav>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -32,8 +34,17 @@ body {
 }
 
 #nav {
-  padding: 30px;
   position: absolute;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+}
+
+nav {
+  margin-left: 20px;
 }
 
 #nav a {
@@ -42,6 +53,19 @@ body {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: orangered;
+}
+
+h1, h2, h3, h4, button {
+  font-family: 'Rubik', sans-serif;
+}
+
+h2 {
+  font-size: larger;
+  font-size: 27px;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
 }
 </style>
