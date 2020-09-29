@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <header class="home-header"> </header>
+    <header class="home-header" v-bind:style="{ backgroundImage: 'url(' + image + ')' }"> </header>
     <main> 
       <meetUps :dataBase="list" v-on:selectMeetUp="toggleMeetUp"/> 
       <meetUp v-if="clicked == true" v-on:close="closeMeetUp" :dataBaseItem="clickedListitem" :view="view"/>
@@ -15,13 +15,15 @@
 import { getMeetUps } from '../data/data';
 import meetUps from '../components/Meet-ups'
 import meetUp from '../components/Meet-up'
+import logo from '../assets/logo3.png'
 
 export default {
 	data: () => ({
     view: "home",
     list: [],
     clicked: false,
-    clickedListitem: {}
+    clickedListitem: {},
+    image: logo
     }),
     components: { meetUps, meetUp },
 	created() {
@@ -41,10 +43,16 @@ export default {
 </script>
 
 <style scoped>
+main {
+  display: flex;
+  justify-content: center;
+}
+
 .home-header {
     height: 100vh;
     margin: 0px;
     padding: 0px;
-    background: green;
+    background-size: contain;
+    background-repeat: round;
 }
 </style>

@@ -3,7 +3,8 @@
     <div id="nav">
       <nav>
         <router-link to="/">Greet Ups</router-link> |
-        <router-link to="/profile">My Greet Ups</router-link>
+        <router-link to="/profile">My Greet Ups</router-link> |
+        <router-link to="/reviews">My Reviews</router-link>
       </nav>
     </div>
     <router-view/>
@@ -11,10 +12,9 @@
 </template>
 
 <script>
-
 export default {
   data: () => ({
-
+    
   })
 }
 </script>
@@ -34,17 +34,16 @@ body {
 }
 
 #nav {
-  position: absolute;
+  position: fixed;
+  -webkit-box-shadow: 0px 5px 20px 10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 5px 20px 10px rgba(0,0,0,0.75);
+  box-shadow: 0px 5px 20px 10px rgba(0,0,0,0.75);
   width: 100%;
   height: 50px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: white;
-}
-
-nav {
-  margin-left: 20px;
 }
 
 #nav a {

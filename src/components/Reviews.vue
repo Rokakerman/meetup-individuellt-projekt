@@ -9,7 +9,7 @@
                 </main>
                 <footer class="figure-footer">
                     <div class="under-title-container"> <h3> {{ item.underTitle }} </h3> <p/> </div>
-                    <div class="description-container"> <p> {{ item.description }} </p> </div>
+                    <div class="description-container"> <p> {{ item.review }} </p> </div>
                 </footer>
             </li>
         </ul>
@@ -18,7 +18,6 @@
 
 <script>
 import MeetUp from '../components/Meet-up'
-import { getMeetUps } from '@/data/data.js';
 
 export default {
     data() {
@@ -28,11 +27,11 @@ export default {
     },
     components: { meetUp: MeetUp},
     props: {
-        dataBase: Array
+        userData: Array
     },
     computed: {
         list() {
-            return this.meetUpList = this.dataBase
+            return this.meetUpList = this.userData
         }
     },
     methods: {
@@ -45,12 +44,7 @@ export default {
 }
 </script>
 
-<style>
-.meet-up-list {
-    width: 70%;
-    max-width: 280px;
-}
-
+<style scoped>
 .img-container {
     width: 100%;
     height: 30%;
@@ -73,8 +67,7 @@ ul {
     justify-content: center;
     overflow: auto;
     overflow-x: visible;
-    height: 100vh;
-    width: 100%;
+    height: 100%;
 }
 
 li {

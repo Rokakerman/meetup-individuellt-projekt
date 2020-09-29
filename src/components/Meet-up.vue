@@ -24,10 +24,12 @@
             <footer class="figure-footer">
                 <div class="under-title-container"> <h3> {{ dataBaseItem.underTitle }} </h3> <p/> </div>
                 <div class="description-container" v-if="!review"> <p> {{ dataBaseItem.description }} </p> </div>
-                <input v-if="review" type="text" class="review-field">
+                <input v-if="review" type="text" v-model="inputText" class="review-field">
             <div class="buttons-wrapper">
-                <button id="booked" class="book" @click="removeMe"> CANCEL </button>
-                <button id="booked" class="book" @click="reviewMe"> REVIEW </button>
+                <button v-if="review" id="booked" class="book" @click="dontReviewMe"> BACK </button>
+                <button v-else id="booked" class="book" @click="removeMe"> CANCEL </button>
+                <button v-if="review" id="booked" class="book" @click="reviewMe"> SUBMIT </button>
+                <button v-else id="booked" class="book" @click="reviewOn"> REVIEW </button>
             </div>
             </footer>
         </figure>   
@@ -38,13 +40,14 @@
 import { saveMeetUp } from '../data/data'
 import { removeMeetUp } from '../data/data'
 import { checkMeetUp } from '../data/data'
-
+import { review } from '../data/data'
 export default {
     data: () => ({
         meetUp: '',
         stored: false,
         currentView: '',
-        review: false
+        review: false,
+        inputText: ''
     }),
     props: {
         dataBaseItem: Object,
@@ -62,8 +65,15 @@ export default {
             removeMeetUp(this.dataBaseItem)
             this.closeMe()
         },
-        reviewMe() {
+        reviewOn() {
             return this.review = true
+        },
+        reviewMe() {
+            review(this.dataBaseItem, this.inputText)
+            
+        },
+        dontReviewMe() {
+            return this.review = false
         }
     },
     mounted: async function () {
@@ -88,6 +98,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #000000bd;
 }
 
 .meet-up-container {
@@ -168,7 +179,7 @@ export default {
 
 .book {
     margin-top: auto;
-    width: 80px;
+    width: 85px;
     height: 35px;
     margin-bottom: 5px;
     border: none;

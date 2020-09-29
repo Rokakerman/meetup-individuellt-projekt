@@ -35,7 +35,7 @@ a {
   width: 100%;
   height: 50px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
