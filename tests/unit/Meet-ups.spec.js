@@ -32,7 +32,7 @@ describe("Meet-ups.vue", () => {
         await wrapper.vm.$nextTick()
 
         console.log(wrapper.emitted())
-        expect(wrapper.emitted()).toEqual({"selectMeetUp": [[1]]})
+        expect(wrapper.emitted()).toEqual({"selectMeetUp": [[0]]})
 
     })
 })

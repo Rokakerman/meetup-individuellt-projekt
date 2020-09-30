@@ -114,6 +114,7 @@ async function review(object, text) {
         if( !fromSss ) {
             sessionStorage.setItem(SSS_KEY,  JSON.stringify(reviews));
             fromSss = sessionStorage.getItem(SSS_KEY);
+            console.log("hej")
             return 
         } else {
             const check = (element) => element.id === object.id;

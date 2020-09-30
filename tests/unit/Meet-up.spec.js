@@ -1,6 +1,8 @@
 import { shallowMount } from '@vue/test-utils'
 import MeetUp from '@/components/Meet-up.vue'
 import { getMeetUps } from '@/data/data.js';
+import { getReviews } from '@/data/data.js';
+import { review } from '@/data/data.js';
 
 describe("Meet-up.vue", () => {
     let wrapper
@@ -64,6 +66,10 @@ describe("Meet-up.vue", () => {
         expect(expected[0]).toStrictEqual(VALUE);
         expect(Object.keys(sessionStorage.__STORE__).length).toBe(1);
     });
+
+    it("should save the review to seesionStorage when submiting a review", async () => {
+       // Han inte med det här testet
+    })
 
     it("should hide the 'book' button and show the 'booked' element when 'book' is clicked", async () => {
         let button = wrapper.get("#book");

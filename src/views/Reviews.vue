@@ -23,6 +23,9 @@ export default {
     clicked: false,
     clickedListitem: {}
     }),
+    props: {
+      database: ''
+    },
     components: { Reviews, meetUp },
     computed: {
       sStorage() {

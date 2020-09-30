@@ -26,10 +26,10 @@
                 <div class="description-container" v-if="!review"> <p> {{ dataBaseItem.description }} </p> </div>
                 <textarea v-if="review" type="text" v-model="inputText" class="review-field"/>
             <div class="buttons-wrapper">
-                <button v-if="review" id="booked" class="book" @click="dontReviewMe"> BACK </button>
-                <button v-else id="booked" class="book" @click="removeMe"> CANCEL </button>
-                <button v-if="review" id="booked" class="book" @click="reviewMe"> SUBMIT </button>
-                <button v-else id="booked" class="book" @click="reviewOn"> REVIEW </button>
+                <button v-if="review" id="back" class="book" @click="dontReviewMe"> BACK </button>
+                <button v-else id="cancel" class="book" @click="removeMe"> CANCEL </button>
+                <button v-if="review" id="submit" class="book" @click="reviewMe"> SUBMIT </button>
+                <button v-else id="review" class="book" @click="reviewOn"> REVIEW </button>
             </div>
             </footer>
         </figure>   
@@ -41,6 +41,7 @@ import { saveMeetUp } from '../data/data'
 import { removeMeetUp } from '../data/data'
 import { checkMeetUp } from '../data/data'
 import { review } from '../data/data'
+
 export default {
     data: () => ({
         meetUp: '',
@@ -228,9 +229,7 @@ p {
 }
 
 @media screen and (min-width: 900px) {
-  .meet-up-container {
-    
-  }
+ 
 }
 
 @media screen and (min-width: 1200px) {
