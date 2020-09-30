@@ -1,5 +1,5 @@
 <template>
-    <div class="meet-up-list">
+    <div v-if="desktop == false" class="meet-up-list-mobile">
         <ul>
             <li v-for="item in list" :key="item.id" @click="emitId(item.id)">
                 <header class="img-container"> <img class="image" :src="item.image"/> </header> 
@@ -14,6 +14,19 @@
             </li>
         </ul>
     </div>
+    <div v-else class="meet-up-list-desktop">
+            <article v-for="item in list" :key="item.id" @click="emitId(item.id)">
+                <header class="img-container"> <img class="image" :src="item.image"/> </header> 
+                <main class="figure-main"> 
+                    <h2> {{ item.title }} </h2>
+                    <h2> {{ item.date }} </h2>
+                </main>
+                <footer class="figure-footer">
+                    <div class="under-title-container"> <h3> {{ item.underTitle }} </h3> <p/> </div>
+                    <div class="description-container"> <p> {{ item.review }} </p> </div>
+                </footer>
+            </article>
+    </div>
 </template>
 
 <script>
@@ -22,7 +35,8 @@ import MeetUp from '../components/Meet-up'
 export default {
     data() {
         return {
-            meetUpList: []
+            meetUpList: [],
+            desktop: ''
         }
     },
     components: { meetUp: MeetUp},
@@ -39,12 +53,67 @@ export default {
             console.log(param)
             this.$emit("selectMeetUp", param)
             return
+        },
+        myEventHandler() {
+           let height = document.documentElement.clientHeight
+           let width = document.documentElement.clientWidth
+           console.log(height + ' ' + width)
+           if(width > 600) {
+               console.log('in the if')
+               return this.desktop = true
+           }
+           else {
+               console.log('in the else')
+               return this.desktop = false
+           }
         }
+    },
+    created() {
+        window.addEventListener("resize", this.myEventHandler);
+        this.myEventHandler()
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.myEventHandler);
     }
 }
 </script>
 
 <style scoped>
+.meet-up-list-mobile {
+    width: 100%;
+    max-width: 300px;
+   
+}
+
+.meet-up-list-desktop {
+    display: grid;
+    grid-row: auto;
+    grid-template-columns: repeat(3, 2fr);
+    width: 100%;
+    
+}
+
+@media screen and (min-width: 600px) {
+  .meet-up-list-desktop {
+    grid-template-columns: repeat(1, 2fr);
+    overflow: auto;
+    overflow-x: visible;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .meet-up-list-desktop {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .meet-up-list-desktop {
+    grid-template-columns: repeat(3, 2fr);
+  }
+}
+
 .img-container {
     width: 100%;
     height: 30%;

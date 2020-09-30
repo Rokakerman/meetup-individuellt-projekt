@@ -47,6 +47,17 @@ export default {
 </script>
 
 <style scoped>
+.profile {
+  background-image: url('../assets/logoPhone.png');
+  background-size: cover;
+  background-repeat: round;
+}
+
+@media screen and (min-width: 600px) {
+  .profile {
+    background-image: url('../assets/logoDesktop.png');
+  }
+}
 .profile-header {
     display: none;
 }
@@ -61,4 +72,5 @@ main {
 .meet-up-component {
     height: 80vh;
 }
+
 </style>

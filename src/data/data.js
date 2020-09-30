@@ -116,14 +116,15 @@ async function review(object, text) {
             fromSss = sessionStorage.getItem(SSS_KEY);
             return 
         } else {
-            reviews = JSON.parse(fromSss)
-            console.log(reviews)
             const check = (element) => element.id === object.id;
             if (reviews.some(check) == true) {
                 //console.log(itemsArray)
+                window.alert("This Greet-Up is reviewed already!")
                 return console.log("this meet-up is reviewed already")
             } else {
                 //console.log(itemsArray)
+                reviews = JSON.parse(fromSss)
+                console.log(reviews)
                 meetUp.review = text
                 console.log(meetUp.review)
                 reviews.push(meetUp)

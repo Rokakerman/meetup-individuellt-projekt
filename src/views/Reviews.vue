@@ -1,5 +1,5 @@
 <template>
-  <div class="profile">
+  <div class="reviews">
     <header class="profile-header"> </header>
     <main> 
       <Reviews class="meet-up-component" :userData="sStorage" v-on:selectMeetUp="toggleMeetUp"/> 
@@ -40,13 +40,25 @@ export default {
     },
     closeMeetUp() {
       this.clicked = !this.clicked
-      this.list = getMyMeetUps()
+      this.list = getReviews()
     }
   }
 }
 </script>
 
 <style scoped>
+.reviews {
+  background-image: url('../assets/logoPhone.png');
+  background-size: cover;
+  background-repeat: round;
+}
+
+@media screen and (min-width: 600px) {
+  .reviews {
+    background-image: url('../assets/logoDesktop.png');
+  }
+}
+
 .profile-header {
     display: none;
 }

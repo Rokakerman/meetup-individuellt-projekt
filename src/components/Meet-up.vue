@@ -24,7 +24,7 @@
             <footer class="figure-footer">
                 <div class="under-title-container"> <h3> {{ dataBaseItem.underTitle }} </h3> <p/> </div>
                 <div class="description-container" v-if="!review"> <p> {{ dataBaseItem.description }} </p> </div>
-                <input v-if="review" type="text" v-model="inputText" class="review-field">
+                <textarea v-if="review" type="text" v-model="inputText" class="review-field"/>
             <div class="buttons-wrapper">
                 <button v-if="review" id="booked" class="book" @click="dontReviewMe"> BACK </button>
                 <button v-else id="booked" class="book" @click="removeMe"> CANCEL </button>
@@ -70,6 +70,7 @@ export default {
         },
         reviewMe() {
             review(this.dataBaseItem, this.inputText)
+            return this.review = false
             
         },
         dontReviewMe() {
@@ -112,7 +113,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: cornsilk;
+    background: white;
     -webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
@@ -132,9 +133,18 @@ export default {
 
 .close {
     position: absolute;
-    top: -26px;
-    right: 7px;
+    top: -15px;
+    right: 2px;
     color: white;
+    font-size: xxx-large;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-weight: 600;
+}
+
+.close:hover {
+    cursor: pointer;
 }
 
 .figure-main {
@@ -166,6 +176,9 @@ export default {
     height: 100%;
     margin-bottom: 10px;
     margin-top: 5px;
+    padding-top:    5px;
+    padding-left: 10px;
+    resize: none;
 }
 
 .buttons-wrapper {
@@ -206,5 +219,23 @@ h3 {
 
 p {
     margin: 0px;
+}
+
+@media screen and (min-width: 600px) {
+  .meet-up-container {
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .meet-up-container {
+    
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .meet-up-container {
+    width: 600px;
+  }
 }
 </style>

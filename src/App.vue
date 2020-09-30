@@ -68,4 +68,9 @@ h2 {
 p {
   font-family: 'Roboto', sans-serif;
 }
+
+button:hover{
+    cursor: pointer;
+}
+
 </style>
