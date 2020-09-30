@@ -58,13 +58,13 @@ export default {
         myEventHandler() {
            let height = document.documentElement.clientHeight
            let width = document.documentElement.clientWidth
-           console.log(height + ' ' + width)
+
            if(width > 600) {
-               console.log('in the if')
+               
                return this.desktop = true
            }
            else {
-               console.log('in the else')
+           
                return this.desktop = false
            }
         }
