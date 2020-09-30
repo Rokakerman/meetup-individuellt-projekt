@@ -59,7 +59,6 @@ export default {
 ul {
     list-style: none;
     padding: 0px;
-    margin: 0px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
@@ -68,6 +67,7 @@ ul {
     overflow: auto;
     overflow-x: visible;
     height: 100%;
+    width: 100%;
 }
 
 li {

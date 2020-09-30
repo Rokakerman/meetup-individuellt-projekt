@@ -65,7 +65,6 @@ export default {
 ul {
     list-style: none;
     padding: 0px;
-    margin: 0px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;

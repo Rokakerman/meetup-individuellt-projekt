@@ -18,14 +18,7 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 a {
   color: #42b983;
 }
@@ -37,15 +30,11 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
 </style>

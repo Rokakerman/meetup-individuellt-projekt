@@ -44,6 +44,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: white;
+  z-index: 1;
 }
 
 #nav a {
