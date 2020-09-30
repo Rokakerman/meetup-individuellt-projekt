@@ -2,7 +2,7 @@
     <div class="meet-up-list">
         <ul>
             <li v-for="item in list" :key="item.id" @click="emitId(item.id)">
-                <header class="img-container"> <img class="image" :src="require(`${item.image}`)"/> </header> 
+                <header class="img-container"> <img class="image" :src="item.image"/> </header> 
                 <main class="figure-main"> 
                     <h2> {{ item.title }} </h2>
                     <h2> {{ item.date }} </h2>
